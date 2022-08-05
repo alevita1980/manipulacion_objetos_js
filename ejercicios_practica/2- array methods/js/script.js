@@ -19,6 +19,10 @@ un array de personas mayores o igual a 18 años.
 - Imprimir en consola el array resultante.
 
 */
+const personas = JSON.parse(personasJSON)
+const personas1 = personas.filter(persona=>persona.edad>=18)
+console.log(personas1);
+
 
 /* 2 - Enunciado
 
@@ -30,6 +34,16 @@ mecanismos que prefiera para agregar por cada persona el nombre y edad
 en el HTML (es decir, generar el contenido de forma dinámica).
 
 */
+ personas.forEach(persona => {
+    console.log("Nombre:" + persona.nombre + "," +  "Edad:"  + persona.edad)
+})
+const parrafo = document.createElement('p');
+const parrafo1 = document.createElement('p');
+parrafo.innerText = "Listado de Personas"
+parrafo1.innerText = personasJSON
+document.body.appendChild(parrafo);
+document.body.appendChild(parrafo1);
+
 
 /* 3 - BONUS TRACK
 
@@ -40,3 +54,44 @@ que sea un valor que se toma del HTML (un input).
 se dispare al presionar un botón en el HTML que usted agregue.
 
 */
+
+
+const inputEdad = document.createElement("input");
+    inputEdad.id = "idInput";
+    inputEdad.name = "edad";
+    inputEdad.placeholder = "Edad";
+    inputEdad.type = "text";
+    inputEdad.classList.add('edad');
+    document.body.appendChild(inputEdad);
+  
+   
+const button = document.createElement("button");
+button.innerHTML = "Agregar";
+document.body.appendChild(button);
+button.onclick = () =>{
+    const edad = inputEdad.value;
+    console.log(edad);
+    const personaEdad = edad.filter(edad=>{
+        return edad
+    });  
+}
+
+
+const button1 = document.createElement("button");
+button1.innerHTML = "Filtrar y Renderizar";
+document.body.appendChild(button1);
+button1.onclick = () =>{
+    const personas = JSON.parse(personasJSON)
+const personas1 = personas.filter(persona=>persona.edad>=18)
+console.log(personas1);
+
+personas.forEach(persona => {
+    console.log("Nombre:" + persona.nombre + "," +  "Edad:"  + persona.edad)
+})
+const parrafo = document.createElement('p');
+const parrafo1 = document.createElement('p');
+parrafo.innerText = "Listado de Personas"
+parrafo1.innerText = personasJSON
+document.body.appendChild(parrafo);
+document.body.appendChild(parrafo1);
+}

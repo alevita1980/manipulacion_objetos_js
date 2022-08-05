@@ -20,6 +20,24 @@ y leer los datos ingresados en "usuario" y "email".
 con los datos almacenados en memoria, a fin de darle la bienvenida al usuario logeado.
 
 */
+const section = document.querySelector("section");
+const btnIngresar = document.getElementById('btnIngresar');
+btnIngresar.onclick = ()=>{
+   const usuario = document.getElementById('usuario').value;
+   const email = document.getElementById('email').value;
+   sessionStorage.setItem("usuario", usuario);
+   sessionStorage.setItem("email", email);
+   const nombre = sessionStorage.getItem('usuario');
+   const emailIngresado = sessionStorage.getItem('email');
+   const parrafo = document.querySelector("#usuarioLogeado");
+   const parrafo2 = document.querySelector("#emailLogeado");
+   parrafo.textContent += nombre;
+   parrafo2.textContent += emailIngresado;
+const login = document.getElementById('login');
+login.classList.add("hidden");
+const logout = document.getElementById('logout');
+logout.classList.remove("hidden");
+}
 
 /* 2 - Enunciado
 
@@ -32,6 +50,11 @@ y deberá revelar la sección "logout" (quitar la clase hidden).
 
 */
 
+
+
+
+
+
 /* 3 - Enunciado
 
 - Debera capturar el evento "onclick" del boton "Salir". Cuando este
@@ -41,3 +64,12 @@ volverse a cargar debería aparecer nuevamente la sección de bienvenida
 ya que no debería haber más datos en memoria cargados.
 
 */
+const section1 = document.querySelector("section");
+const btnSalir = document.getElementById('btnSalir');
+
+
+
+btnSalir.onclick = ()=>{
+sessionStorage.clear()
+location.reload()
+}
